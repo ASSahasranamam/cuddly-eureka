@@ -49,4 +49,9 @@ router.post('/getAllContactsw', function(req, res, next) {
 });
 
 
+
+router.post('/sendAllContacts', function(req, res, next) {
+
+  console.log(json.parse(json.stringify(req.body))["contacts"]);
+});
 module.exports = router;
