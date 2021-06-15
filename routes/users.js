@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
 
   console.log(req.body);
 
-  const collection = client.db("newTest").collection("Contacts4");
+  const collection = client.db("newTest").collection("ContactsGaneshAnna");
 
 
     // perform actions on the collection object
