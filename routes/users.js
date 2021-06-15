@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
 
   console.log(req.body);
 
-  const collection = client.db("newTest").collection("Contacts");
+  const collection = client.db("newTest").collection("Contacts4");
 
 
     // perform actions on the collection object
@@ -52,6 +52,16 @@ router.post('/getAllContactsw', function(req, res, next) {
 
 router.post('/sendAllContacts', function(req, res, next) {
 
-  console.log(JSON.parse(JSON.stringify(req.body["contacts"])));
+  console.log(req.body["contacts"]);
+  const collection = client.db("newTest").collection("Contacts3");
+  console.log(typeof  req.body["contacts"]);
+
+  for ( var i of (JSON.parse((req.body["contacts"])))) {
+    console.log(i +" "+ i.displayName + "" +i.emails );
+    collection.updateOne({"displayName":i.displayName}, {$set: {"displayName":i.displayName,"phone":i.emails}}, {upsert: true});
+
+  }
+
+  res.send("Done")
 });
 module.exports = router;
