@@ -30,12 +30,27 @@ router.post('/', function(req, res, next) {
 });
 
 
+router.post('/localDBData', function(req, res, next) {
+  console.log("Hello");
+
+  console.log(req.body);
+
+  const collection = client.db("newTest").collection("localDBData");
+
+  // perform actions on the collection object
+  collection.updateOne({id: req.body.id},{$set: req.body},{upsert: true})
+
+  res.send('respond with ' + req.body.name);
+});
+
+
+
 router.post('/getAllContactsw', function(req, res, next) {
   console.log("Hello");
 
   // console.log(req.body);
 
-  const collection = client.db("newTest").collection("Contacts");
+  const collection = client.db("newTest").collection("ContactsGaneshAnna");
 
 
   // perform actions on the collection object
@@ -56,11 +71,11 @@ router.post('/sendAllContacts', function(req, res, next) {
   const collection = client.db("newTest").collection("Contacts3");
   console.log(typeof  req.body["contacts"]);
 
-  for ( var i of (JSON.parse((req.body["contacts"])))) {
-    console.log(i +" "+ i.displayName + "" +i.emails );
-    collection.updateOne({"displayName":i.displayName}, {$set: {"displayName":i.displayName,"phone":i.emails}}, {upsert: true});
-
-  }
+  // for ( var i of (JSON.parse((req.body["contacts"])))) {
+  //   console.log(i +" "+ i.displayName + "" +i.emails );
+  //   collection.updateOne({"displayName":i.displayName}, {$set: {"displayName":i.displayName,"phone":i.emails}}, {upsert: true});
+  //
+  // }
 
   res.send("Done")
 });
