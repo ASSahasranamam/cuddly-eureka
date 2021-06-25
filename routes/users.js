@@ -43,6 +43,50 @@ router.post('/localDBData', function(req, res, next) {
   res.send('respond with ' + req.body.name);
 });
 
+router.post('/DeleteOnelocalDBData', function(req, res, next) {
+  console.log("Hello");
+
+  console.log(req.body);
+
+  const collection = client.db("newTest").collection("localDBData");
+
+  // perform actions on the collection object
+  collection.deleteOne({id: req.body.id})
+
+  res.send('respond with: Deleted ' + req.body.name);
+});
+
+
+router.post('/InsertOnelocalDBData', function(req, res, next) {
+  console.log("Hello");
+
+  console.log(req.body);
+
+  const collection = client.db("newTest").collection("localDBData");
+
+  // perform actions on the collection object
+  collection.updateOne({id: req.body.id},{$set: req.body},{upsert: true})
+
+  res.send('respond with: Inserted ' + req.body.name);
+});
+
+
+router.post('/UpdateOnelocalDBData', function(req, res, next) {
+  console.log("Hello");
+
+  console.log(req.body);
+
+  const collection = client.db("newTest").collection("localDBData");
+
+  // perform actions on the collection object
+  collection.updateOne({id: req.body.id},{$set: req.body},{upsert: true})
+
+  res.send('respond with: Updated ' + req.body.name);
+});
+
+
+
+
 
 
 router.post('/getAllContactsw', function(req, res, next) {
