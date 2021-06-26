@@ -94,7 +94,7 @@ router.post('/getAllContactsw', function(req, res, next) {
 
   // console.log(req.body);
 
-  const collection = client.db("newTest").collection("ContactsGaneshAnna");
+  const collection = client.db("newTest").collection("localDBData2");
 
 
   // perform actions on the collection object
