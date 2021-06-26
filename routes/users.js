@@ -35,7 +35,7 @@ router.post('/localDBData', function(req, res, next) {
 
   console.log(req.body);
 
-  const collection = client.db("newTest").collection("localDBData");
+  const collection = client.db("newTest").collection("localDBData2");
 
   // perform actions on the collection object
   collection.updateOne({id: req.body.id},{$set: req.body},{upsert: true})
@@ -48,7 +48,7 @@ router.post('/DeleteOnelocalDBData', function(req, res, next) {
 
   console.log(req.body);
 
-  const collection = client.db("newTest").collection("localDBData");
+  const collection = client.db("newTest").collection("localDBData2");
 
   // perform actions on the collection object
   collection.deleteOne({id: req.body.id})
@@ -62,7 +62,7 @@ router.post('/InsertOnelocalDBData', function(req, res, next) {
 
   console.log(req.body);
 
-  const collection = client.db("newTest").collection("localDBData");
+  const collection = client.db("newTest").collection("localDBData2");
 
   // perform actions on the collection object
   collection.updateOne({id: req.body.id},{$set: req.body},{upsert: true})
